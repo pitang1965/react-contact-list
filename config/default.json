@@ -1,0 +1,4 @@
+{
+  "mongoURI": "mongodb+srv://pitang1965:sUV5vLG6DNlXPOlA@cluster0-pyoss.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "secret"
+}
