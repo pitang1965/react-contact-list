@@ -66,7 +66,7 @@ const Register = props => {
         <div className='form-group'>
           <label htmlFor='email'>メールアドレス</label>
           <input
-            type='text'
+            type='email'
             name='email'
             value={email}
             onChange={onChange}

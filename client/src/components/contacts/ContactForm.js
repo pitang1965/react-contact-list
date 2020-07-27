@@ -1,9 +1,13 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ContactContext from '../../context/contact/contactContext';
+import AlertContext from '../../context/alert/alertContext';
+import { parsePhoneNumberFromString } from 'libphonenumber-js';
 
 const ContactForm = () => {
+  const alertContext = useContext(AlertContext);
   const contactContext = useContext(ContactContext);
 
+  const { setAlert } = alertContext;
   const { addContact, updateContact, clearCurrent, current } = contactContext;
 
   useEffect(() => {
@@ -33,6 +37,18 @@ const ContactForm = () => {
 
   const onSubmit = (e) => {
     e.preventDefault();
+    if (name === '' || email === '') {
+      setAlert('任意でない項目はすべて入力してください', 'danger');
+      return;
+    }
+    if (phone !== '') {
+      const phoneNumber = parsePhoneNumberFromString(phone, 'JP');
+      if (!phoneNumber.isValid()) {
+        setAlert('電話番号として適切な数値を入力してください。', 'danger');
+        return;
+      }
+    }
+
     if (current === null) {
       addContact(contact);
     } else {
@@ -58,7 +74,7 @@ const ContactForm = () => {
         onChange={onChange}
       />
       <input
-        type='text'
+        type='email'
         name='email'
         placeholder='メール'
         value={email}
@@ -67,7 +83,7 @@ const ContactForm = () => {
       <input
         type='text'
         name='phone'
-        placeholder='電話'
+        placeholder='電話番号（任意、数値のみ）'
         value={phone}
         onChange={onChange}
       />
