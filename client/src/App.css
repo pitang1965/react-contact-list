@@ -304,6 +304,10 @@ input {
   color: #888;
 }
 
+.multiline {
+  overflow-wrap: anywhere;
+}
+
 input[type='text'],
 input[type='email'],
 input[type='password'],

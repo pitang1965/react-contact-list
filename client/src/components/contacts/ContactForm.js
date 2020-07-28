@@ -18,6 +18,7 @@ const ContactForm = () => {
         name: '',
         email: '',
         phone: '',
+        memo: '',
         type: 'personal',
       });
     }
@@ -27,10 +28,11 @@ const ContactForm = () => {
     name: '',
     email: '',
     phone: '',
+    memo: '',
     type: 'personal',
   });
 
-  const { name, email, phone, type } = contact;
+  const { name, email, phone, memo, type } = contact;
 
   const onChange = (e) =>
     setContact({ ...contact, [e.target.name]: e.target.value });
@@ -85,6 +87,13 @@ const ContactForm = () => {
         name='phone'
         placeholder='電話番号（任意、数値のみ）'
         value={phone}
+        onChange={onChange}
+      />
+      <input
+        type='text'
+        name='memo'
+        placeholder='メモ（任意）'
+        value={memo}
         onChange={onChange}
       />
       <h5>連絡先の種類</h5>

@@ -8,12 +8,12 @@ const ContactItem = ({ contact }) => {
   const contactContext = useContext(ContactContext);
   const { deleteContact, setCurrent, clearCurrent } = contactContext;
 
-  const { _id, name, email, phone, type } = contact;
+  const { _id, name, email, phone, memo, type } = contact;
 
   const onDelete = () => {
     deleteContact(_id);
     clearCurrent();
-  }
+  };
 
   return (
     <div className='card bg-light'>
@@ -41,10 +41,22 @@ const ContactItem = ({ contact }) => {
             <i className='fas fa-phone'></i> {phone}
           </li>
         )}
+        {memo && (
+          <li className='multiline'>
+            <i className='fas fa-sticky-note'></i> {memo}
+          </li>
+        )}
       </ul>
       <p>
-        <button className='btn btn-dark btun-sm' onClick={() => setCurrent(contact)}>編集</button>
-        <button className='btn btn-danger btun-sm' onClick={onDelete}>削除</button>
+        <button
+          className='btn btn-dark btun-sm'
+          onClick={() => setCurrent(contact)}
+        >
+          編集
+        </button>
+        <button className='btn btn-danger btun-sm' onClick={onDelete}>
+          削除
+        </button>
       </p>
     </div>
   );
