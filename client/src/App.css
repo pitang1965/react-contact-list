@@ -378,6 +378,8 @@ table th {
   color: #fff;
   padding: 0.45rem;
   margin: 0 0.25rem;
+  display: table-cell;
+  vertical-align: middle;
 }
 
 .navbar a:hover {
@@ -386,6 +388,17 @@ table th {
 
 .navbar .welcome span {
   margin-right: 0.6rem;
+}
+
+.underline {
+	position: relative;
+	padding: .3em;
+}
+.underline:after {
+	content: "";
+	display: block;
+	height: 4px;
+	background: linear-gradient(to right, yellow, transparent);
 }
 
 /* Animation (Add After) */

@@ -17,7 +17,8 @@ const Navbar = ({ title, icon }) => {
   };
   const authLinks = (
     <Fragment>
-      <li>こんにちは {user && user.name}さん</li>
+      <li className='underline'>こんにちは {user && user.name}さん!</li>
+      <li><Link to='/'><i className='fas fa-home'></i>ホーム</Link></li>
       <li>
         <a onClick={onLogout} href='#!'>
           <i className='fas fa-sign-out-alt'></i>{' '}
@@ -46,7 +47,7 @@ const Navbar = ({ title, icon }) => {
       <ul>
         {isAuthenticated ? authLinks : guestLinks}
         <li>
-          <Link to='/about'>本アプリについて</Link>
+          <Link to='/about' className='bg-secondary'>本アプリについて</Link>
         </li>
       </ul>
     </div>
