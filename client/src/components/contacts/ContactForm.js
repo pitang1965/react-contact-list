@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import ContactContext from '../../context/contact/contactContext';
 import AlertContext from '../../context/alert/alertContext';
-import { parsePhoneNumberFromString } from 'libphonenumber-js';
+import parsePhoneNumber from 'libphonenumber-js';
 
 const ContactForm = () => {
   const alertContext = useContext(AlertContext);
@@ -44,7 +44,7 @@ const ContactForm = () => {
       return;
     }
     if (phone !== '') {
-      const phoneNumber = parsePhoneNumberFromString(phone, 'JP');
+      const phoneNumber = parsePhoneNumber(phone, 'JP');
       if (!phoneNumber.isValid()) {
         setAlert('電話番号として適切な数値を入力してください。', 'danger');
         return;
